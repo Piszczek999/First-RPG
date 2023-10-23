@@ -9,11 +9,13 @@ public class Slime : Entity
   GameObject[] players;
   bool isRaged = false;
   bool canMove = false;
+  Collider2D slimeCollider;
 
   public override void Start()
   {
     base.Start();
     players = GameObject.FindGameObjectsWithTag("Player");
+    slimeCollider = GetComponent<Collider2D>();
   }
 
   private void FixedUpdate()
@@ -60,11 +62,11 @@ public class Slime : Entity
   {
     base.Defeated();
     canMove = false;
+    slimeCollider.enabled = false;
   }
 
   private void OnTriggerEnter2D(Collider2D other)
   {
-    Debug.Log("SLIME HIT");
     if (other.tag == "Player")
     {
       // Deal damage to the enemy

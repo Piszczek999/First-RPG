@@ -6688,18 +6688,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8979690251805780079, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
       propertyPath: m_Size.x
-      value: 0.1
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: -8979690251805780079, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
       propertyPath: m_Size.y
-      value: 0.04
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: -8979690251805780079, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8979690251805780079, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
       propertyPath: m_Offset.y
-      value: 0.05
+      value: 0.02
       objectReference: {fileID: 0}
-    - target: {fileID: 1921517963986325109, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
-      propertyPath: m_Interpolate
+    - target: {fileID: 1764206353695604872, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1764206353695604872, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1764206353695604872, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2978617086176360501, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
@@ -6760,14 +6772,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6865945937363379526, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6865945937363379526, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6865945937363379526, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7069759436510155143, guid: 7619c7fcb53859e4b8fd6244c16a1c36, type: 3}
