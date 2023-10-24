@@ -6,10 +6,17 @@ using UnityEngine.InputSystem;
 // Takes and handles input and movement for a player character
 public class PlayerController : Entity
 {
+    public int level = 1;
+    public float exp = 0;
     public SwordAttack swordAttack;
     Vector2 movementInput;
     bool canMove = true;
 
+    public override void Start()
+    {
+        LoadPlayer();
+        base.Start();
+    }
     private void FixedUpdate()
     {
         if (canMove)
@@ -59,4 +66,33 @@ public class PlayerController : Entity
         animator.SetTrigger("swordAttack");
     }
     // ------------------------------
+
+    void OnApplicationQuit()
+    {
+        SavePlayer();
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+        Debug.Log("Player saved");
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        if (data == null) return;
+
+        level = data.level;
+        exp = data.exp;
+        health = data.health;
+        maxHealth = data.maxHealth;
+
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        transform.position = position;
+
+    }
 }

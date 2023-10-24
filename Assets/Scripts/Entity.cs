@@ -5,8 +5,9 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public float moveSpeed = 1f;
-    private float health = 10f;
-    private float maxHealth = 10f;
+    public float health = 10f;
+    public float maxHealth = 10f;
+    public bool defeated = false;
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.02f;
     protected List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -30,6 +31,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Defeated()
     {
+        defeated = true;
         animator.SetTrigger("Defeated");
     }
 
