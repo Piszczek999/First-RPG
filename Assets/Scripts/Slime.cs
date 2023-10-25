@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class Slime : Entity
 {
-  [SerializeField] float damage = 2;
-  Vector2 direction;
-  GameObject[] players;
-  bool isRaged = false;
-  bool canMove = false;
+  [SerializeField] private float damage;
+  [SerializeField] private bool isRaged;
+
+  private Vector2 direction;
+  private GameObject[] players;
+  private bool canMove = false;
   Collider2D slimeCollider;
 
-  public override void Start()
+  public float Damage { get { return damage; } }
+  public bool IsRaged { get { return isRaged; } }
+
+  protected override void Awake()
+  {
+    base.Awake();
+    slimeCollider = GetComponent<Collider2D>();
+  }
+
+  protected override void Start()
   {
     base.Start();
     players = GameObject.FindGameObjectsWithTag("Player");
-    slimeCollider = GetComponent<Collider2D>();
   }
 
   private void FixedUpdate()
@@ -58,7 +67,7 @@ public class Slime : Entity
     }
   }
 
-  public override void Defeated()
+  protected override void Defeated()
   {
     base.Defeated();
     canMove = false;

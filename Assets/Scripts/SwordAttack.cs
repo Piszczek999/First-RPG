@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
-    private PlayerController player;
+    private Player player;
     public Collider2D swordCollider;
     public float damage = 3;
     Vector2 rightAttackOffset;
 
     private void Start()
     {
-        player = GetComponentInParent<PlayerController>();
-        rightAttackOffset = transform.position;
+        player = GetComponentInParent<Player>();
+        rightAttackOffset = transform.localPosition;
     }
 
     public void AttackRight()
@@ -42,7 +42,7 @@ public class SwordAttack : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                if (enemy.defeated) player.exp += 10;
+                // if (enemy.IsDefeated) player.exp += 10;
             }
         }
     }

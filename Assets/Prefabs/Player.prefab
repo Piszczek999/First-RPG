@@ -632,7 +632,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
@@ -643,7 +643,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6666667, y: 0.6666667}
+  m_Size: {x: 0.12, y: 0.06}
   m_EdgeRadius: 0
 --- !u!114 &6165731844610693061
 MonoBehaviour:
@@ -688,6 +688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
+  health: 10
+  maxHealth: 10
+  defeated: 0
   movementFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -703,6 +706,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   collisionOffset: 0.02
+  level: 1
+  exp: 0
   swordAttack: {fileID: 7912506415099630031}
 --- !u!95 &6054704749277200458
 Animator:

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-  public static void SavePlayer(PlayerController player)
+  public static void SavePlayer(Player player)
   {
     PlayerData data = new PlayerData(player);
 

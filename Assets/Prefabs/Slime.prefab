@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 1903557484912655368}
   - component: {fileID: 4279773909789630895}
   m_Layer: 8
-  m_Name: slime_0
+  m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,6 +510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  health: 10
+  maxHealth: 10
+  isDefeated: 0
   movementFilter:
     useTriggers: 1
     useLayerMask: 1

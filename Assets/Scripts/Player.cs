@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Takes and handles input and movement for a player character
-public class PlayerController : Entity
+public class Player : Entity
 {
-    public int level = 1;
-    public float exp = 0;
-    public SwordAttack swordAttack;
-    Vector2 movementInput;
-    bool canMove = true;
+    [SerializeField] private int level;
+    [SerializeField] private float exp;
 
-    public override void Start()
+    public SwordAttack swordAttack;
+    private Vector2 movementInput;
+    private bool canMove = true;
+
+    public int Level { get { return level; } }
+    public float Exp { get { return exp; } }
+
+    protected override void Awake()
     {
+        base.Awake();
         LoadPlayer();
+    }
+
+    protected override void Start()
+    {
         base.Start();
     }
     private void FixedUpdate()
@@ -26,8 +34,8 @@ public class PlayerController : Entity
         }
     }
 
-    // ANIMATOR TRIGGERS
-    public void SwordAttack()
+    #region Animator Triggers
+    private void SwordAttack()
     {
         if (spriteRenderer.flipX == true)
         {
@@ -39,7 +47,7 @@ public class PlayerController : Entity
         }
     }
 
-    public void EndSwordAttack()
+    private void EndSwordAttack()
     {
         swordAttack.StopAttack();
     }
@@ -52,10 +60,9 @@ public class PlayerController : Entity
     {
         canMove = true;
     }
-    //------------------------------
+    #endregion
 
-
-    // PLAYER INPUT
+    #region Player Input
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
@@ -65,7 +72,8 @@ public class PlayerController : Entity
     {
         animator.SetTrigger("swordAttack");
     }
-    // ------------------------------
+    #endregion
+
 
     void OnApplicationQuit()
     {

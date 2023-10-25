@@ -7,12 +7,12 @@ public class PlayerData
     public float maxHealth;
     public float[] position;
 
-    public PlayerData(PlayerController player)
+    public PlayerData(Player player)
     {
-        level = player.level;
-        exp = player.exp;
-        health = player.health;
-        maxHealth = player.maxHealth;
+        level = player.Level;
+        exp = player.Exp;
+        health = player.Health;
+        maxHealth = player.MaxHealth;
 
         position = new float[3];
         position[0] = player.transform.position.x;

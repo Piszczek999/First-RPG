@@ -2,40 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+public abstract class Entity : MonoBehaviour
 {
-    public float moveSpeed = 1f;
-    public float health = 10f;
-    public float maxHealth = 10f;
-    public bool defeated = false;
-    public ContactFilter2D movementFilter;
-    public float collisionOffset = 0.02f;
-    protected List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    protected Rigidbody2D rb;
-    protected SpriteRenderer spriteRenderer;
-    protected Animator animator;
-    protected FloatingHealthbar healthbar;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] protected float health;
+    [SerializeField] protected float maxHealth;
+    [SerializeField] private bool isDefeated;
+    [SerializeField] private float collisionOffset = 0.02f;
+    [SerializeField] private ContactFilter2D movementFilter;
 
-    public void Awake()
+    private List<RaycastHit2D> castCollisions { get; } = new List<RaycastHit2D>();
+    protected Rigidbody2D rb { get; private set; }
+    protected SpriteRenderer spriteRenderer { get; private set; }
+    protected Animator animator { get; private set; }
+    protected FloatingHealthbar healthbar { get; private set; }
+
+    public float MoveSpeed { get { return moveSpeed; } }
+    public float Health { get { return health; } }
+    public float MaxHealth { get { return maxHealth; } }
+    public bool IsDefeated { get { return isDefeated; } }
+
+    protected virtual void Awake()
     {
         healthbar = GetComponentInChildren<FloatingHealthbar>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public virtual void Start()
+    protected virtual void Start()
     {
         healthbar.SetMaxHealth(maxHealth);
         healthbar.SetHealth(health);
     }
 
-    public virtual void Defeated()
+    protected virtual void Defeated()
     {
-        defeated = true;
+        isDefeated = true;
         animator.SetTrigger("Defeated");
     }
 
-    public void RemoveEnemy()
+    public void RemoveObject()
     {
         Destroy(gameObject);
     }
