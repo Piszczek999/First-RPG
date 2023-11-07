@@ -7,10 +7,9 @@ public class Player : Entity
 {
     [SerializeField] private int level;
     [SerializeField] private float exp;
-
-    public SwordAttack swordAttack;
+    public PlayerAttack attack;
     private Vector2 movementInput;
-    private bool canMove = true;
+    public bool canMove = true;
 
     public int Level { get { return level; } }
     public float Exp { get { return exp; } }
@@ -27,40 +26,18 @@ public class Player : Entity
     }
     private void FixedUpdate()
     {
-        if (canMove)
+        if (canMove && movementInput != Vector2.zero)
         {
-            bool success = Move(movementInput);
-            animator.SetBool("isMoving", success);
-        }
-    }
-
-    #region Animator Triggers
-    private void SwordAttack()
-    {
-        if (spriteRenderer.flipX == true)
-        {
-            swordAttack.AttackLeft();
+            if (movementInput.x < 0) spriteRenderer.flipX = true;
+            else if (movementInput.x > 0) spriteRenderer.flipX = false;
+            rb.MovePosition(rb.position + movementInput.normalized * MoveSpeed * Time.fixedDeltaTime);
+            animator.SetBool("isMoving", true);
         }
         else
         {
-            swordAttack.AttackRight();
+            animator.SetBool("isMoving", false);
         }
     }
-
-    private void EndSwordAttack()
-    {
-        swordAttack.StopAttack();
-    }
-    private void LockMovement()
-    {
-        canMove = false;
-    }
-
-    private void UnlockMovement()
-    {
-        canMove = true;
-    }
-    #endregion
 
     #region Player Input
     void OnMove(InputValue movementValue)
@@ -70,7 +47,7 @@ public class Player : Entity
 
     void OnFire()
     {
-        animator.SetTrigger("swordAttack");
+
     }
     #endregion
 

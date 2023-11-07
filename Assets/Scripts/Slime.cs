@@ -18,7 +18,7 @@ public class Slime : Entity
   protected override void Awake()
   {
     base.Awake();
-    slimeCollider = GetComponent<Collider2D>();
+    slimeCollider = GetComponentInChildren<Collider2D>();
   }
 
   protected override void Start()
@@ -33,7 +33,7 @@ public class Slime : Entity
     {
       if (canMove)
       {
-        Move(direction);
+        rb.MovePosition(rb.position + direction * Time.fixedDeltaTime);
       }
     }
     else
