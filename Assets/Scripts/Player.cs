@@ -47,7 +47,7 @@ public class Player : Entity
 
     void OnFire()
     {
-
+        attack.Attack();
     }
     #endregion
 

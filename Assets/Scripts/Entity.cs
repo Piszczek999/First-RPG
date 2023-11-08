@@ -9,9 +9,9 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected float health;
     [SerializeField] protected float maxHealth;
     [SerializeField] private bool isDefeated;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
 
     protected Rigidbody2D rb { get; private set; }
-    protected SpriteRenderer spriteRenderer { get; private set; }
     protected Animator animator { get; private set; }
     protected FloatingHealthbar healthbar { get; private set; }
 
@@ -25,15 +25,15 @@ public abstract class Entity : MonoBehaviour
         healthbar = GetComponentInChildren<FloatingHealthbar>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
+
     protected virtual void Start()
     {
         healthbar.SetMaxHealth(maxHealth);
         healthbar.SetHealth(health);
     }
 
-    protected virtual void Defeated()
+    protected virtual void Die()
     {
         isDefeated = true;
         animator.SetTrigger("Defeated");
@@ -52,7 +52,7 @@ public abstract class Entity : MonoBehaviour
 
         if (health <= 0)
         {
-            Defeated();
+            Die();
         }
     }
 

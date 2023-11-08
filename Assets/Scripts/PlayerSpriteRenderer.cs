@@ -10,9 +10,9 @@ public class PlayerSpriteRenderer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        animator.GetComponent<Animator>();
-        player.GetComponentInParent<Player>();
-        spriteRenderer.GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        player = GetComponentInParent<Player>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class PlayerSpriteRenderer : MonoBehaviour
         }
         else
         {
-            player.attack.AttackRight();
+            player.attack.Attack();
         }
     }
 

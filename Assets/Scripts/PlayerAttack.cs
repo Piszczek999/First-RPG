@@ -7,24 +7,25 @@ public class PlayerAttack : MonoBehaviour
     Player player;
     public Collider2D swordCollider;
     public float damage = 3;
-    Vector2 rightAttackOffset;
+    Vector2 AttackOffset;
 
     private void Start()
     {
         player = GetComponentInParent<Player>();
-        rightAttackOffset = transform.localPosition;
+        AttackOffset = transform.localPosition;
     }
 
-    public void AttackRight()
+    public void Attack()
     {
+        // if(player.)
+        transform.localPosition = AttackOffset;
         swordCollider.enabled = true;
-        transform.localPosition = rightAttackOffset;
     }
 
     public void AttackLeft()
     {
         swordCollider.enabled = true;
-        transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+        transform.localPosition = new Vector3(AttackOffset.x * -1, AttackOffset.y);
     }
 
     public void StopAttack()

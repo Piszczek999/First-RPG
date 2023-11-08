@@ -475,7 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cf66c16f5864440a7e61d8e01a6b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordAttack: {fileID: 7912506415099630031}
 --- !u!1 &3174626561486355768
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +789,8 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   isDefeated: 0
+  spriteRenderer: {fileID: 8521132265837670601}
   level: 1
   exp: 0
-  swordAttack: {fileID: 7912506415099630031}
+  attack: {fileID: 7912506415099630031}
   canMove: 1

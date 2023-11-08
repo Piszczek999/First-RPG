@@ -67,9 +67,9 @@ public class Slime : Entity
     }
   }
 
-  protected override void Defeated()
+  protected override void Die()
   {
-    base.Defeated();
+    base.Die();
     canMove = false;
     slimeCollider.enabled = false;
   }
